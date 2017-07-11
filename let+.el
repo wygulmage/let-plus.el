@@ -9,6 +9,7 @@ Example:
        \foo ((x y) (+ x y)))
   \(foo a b))
 => 3"
+  (declare (indent 1))
   (cl-labels
       ((sublet
         (var val)
