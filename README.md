@@ -1,4 +1,4 @@
-# let-plus.el
+# let+.el
 let*, cl-labels, and seq-let all in one package.
 
 ## Use
