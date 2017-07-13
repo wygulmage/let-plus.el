@@ -11,20 +11,17 @@ Example:
 => 3"
   (declare (indent 1))
   (cl-labels
-      ((sublet
-        (var val)
+      ((sublet (var val)
         (cond
-         ((sequencep var)
-          ;; Pattern-match sequence.
+         ((sequencep var); Pattern-match sequence.
           `(seq-let ,var ,val))
          ((and (consp val)
-               (listp (car val))
-           ;; Bind procedure.
+               (listp (car val)); Bind procedure.
            `(cl-labels ((,var . ,val)))))
-         (t `(let ((,var ,val))))))
+         (t; Bind variable.
+          `(let ((,var ,val))))))
 
-       (combind
-        (bindings)
+       (combind (bindings)
         (if bindings
             (seq-let (var val &rest brest) bindings
               (let ((sublet (sublet var val)))
