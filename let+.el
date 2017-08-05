@@ -1,11 +1,17 @@
 ;;; let+.el --- Let everything -*- lexical-binding: t -*-
-(mapc #'require [cl-macs seq])
+(mapc #'require
+      [byte-run ; `defmacro'
+       cl-macs ; `cl-labels'
+       seq]) ; `seq-let'
+
+;;; NOTE: Normally you should use this and other macro packages with (eval-when-compile (mapc #'require [let+ ...])).
 
 (defmacro let+ (BINDINGS &rest BODY)
-  "Imagine BINDINGS as a big `setf' body that does the right thing with lists, functions, etc.
+  "Locally bind variables and procedures and pattern-match sequences, then evaluate BODY.
+Imagine BINDINGS as a big `setf' body that does the right thing with lists, functions, etc.
 
 Example:
-\(let+ ((a b) '(1 2)
+\(let+ ((a b) [1 2]
        \foo ((x y) (+ x y)))
   \(foo a b))
 => 3"
@@ -30,3 +36,4 @@ Example:
     (combind BINDINGS)))
 
 (provide 'let+)
+;; All good things must come to an end, and let+.el ends h
