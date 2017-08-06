@@ -1,7 +1,6 @@
 ;;; let+.el --- Let everything -*- lexical-binding: t -*-
 (mapc #'require
-      [byte-run ; `defmacro'
-       cl-macs ; `cl-labels'
+      [cl-macs ; `cl-labels'
        seq]) ; `seq-let'
 
 ;;; NOTE: Normally you should use this and other macro packages with (eval-when-compile (mapc #'require [let+ ...])).
