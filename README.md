@@ -1,5 +1,5 @@
 # let+.el
-let*, cl-labels, and seq-let all in one package.
+`let*`, `cl-labels`, and `seq-let` all in one package.
 
 ## Use
 ```
@@ -9,3 +9,5 @@ let*, cl-labels, and seq-let all in one package.
   (plus x a b c d))
 => 10
 ```
+
+Bindings are made in order, like `let*`. Sequence bindings are recognized because they have a sequence on the left. Function bindings recognized by having the tail (`cdr`) of a `lambda` on the right.
