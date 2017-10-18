@@ -13,20 +13,25 @@ Example:
 \(let+ ((a b) [1 2]
        \foo ((x y) (+ x y)))
   \(foo a b))
-=> 3"
+;=> 3"
   (declare (indent 1))
   (cl-labels
       ((sublet (var val)
+        ;; Pattern-match to make the right kind of binding.
         (cond
-         ((sequencep var); Pattern-match sequence.
+         ;; Sequence
+         ((sequencep var)
           `(seq-let ,var ,val))
+         ;; Procedure
          ((and (consp val)
-               (listp (car val)); Bind procedure.
+               (listp (car val))
            `(cl-labels ((,var . ,val)))))
-         (t; Bind variable.
+         ;; Variable
+         (t
           `(let ((,var ,val))))))
 
        (combind (bindings)
+        ;; String all the bindings together.
         (if bindings
             (seq-let (var val &rest brest) bindings
               (let ((sublet (sublet var val)))
