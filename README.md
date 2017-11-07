@@ -10,4 +10,4 @@
 ;=> 10
 ```
 
-Bindings are made in order, like `let*`. Sequence bindings are recognized because they have a sequence on the left. Function bindings recognized by having the tail (`cdr`) of a `lambda` on the right.
+Bindings are made in order, like `let*`. Sequence bindings are recognized because they have a sequence on the left. Function bindings are recognized by having the tail (`cdr`) of a `lambda`.

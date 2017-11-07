@@ -3,7 +3,7 @@
       [cl-macs ; `cl-labels'
        seq]) ; `seq-let'
 
-;;; NOTE: Normally you should use this and other macro packages with (eval-when-compile (mapc #'require [let+ ...])).
+;;; NOTE: Normally you should use this with (eval-when-compile (require 'let+)).
 
 (defmacro let+ (BINDINGS &rest BODY)
   "Locally bind variables and procedures and pattern-match sequences, then evaluate BODY.
@@ -40,4 +40,3 @@ Example:
     (combind BINDINGS)))
 
 (provide 'let+)
-;; All good things must come to an end, and let+.el ends h
